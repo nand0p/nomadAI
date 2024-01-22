@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "allow_ssh" {
   to_port           = 22
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_nomad" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "allow_nomad" {
   to_port           = 4648
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_serf_tcp" {
@@ -43,7 +43,7 @@ resource "aws_security_group_rule" "allow_consul_serf_tcp" {
   to_port           = 8302
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_serf_udp" {
@@ -53,7 +53,7 @@ resource "aws_security_group_rule" "allow_consul_serf_udp" {
   to_port           = 8302
   protocol          = "udp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_gossip_udp" {
@@ -63,7 +63,7 @@ resource "aws_security_group_rule" "allow_consul_gossip_udp" {
   to_port           = 7301
   protocol          = "udp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_gossip_tcp" {
@@ -73,7 +73,7 @@ resource "aws_security_group_rule" "allow_consul_gossip_tcp" {
   to_port           = 7301
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_api" {
@@ -83,7 +83,7 @@ resource "aws_security_group_rule" "allow_consul_api" {
   to_port           = 8502
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_dns_tcp" {
@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "allow_consul_dns_tcp" {
   to_port           = 8600
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_consul_dns_udp" {
@@ -103,7 +103,7 @@ resource "aws_security_group_rule" "allow_consul_dns_udp" {
   to_port           = 8600
   protocol          = "udp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_http" {
@@ -113,7 +113,7 @@ resource "aws_security_group_rule" "allow_http" {
   to_port           = 80
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_https" {
@@ -123,7 +123,7 @@ resource "aws_security_group_rule" "allow_https" {
   to_port           = 443
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_security_group_rule" "allow_docker_ephemeral" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "allow_docker_ephemeral" {
   to_port           = 32000
   protocol          = "tcp"
   security_group_id = aws_security_group.nomad_ai_cluster[0].id
-  cidr_blocks       = var.trusted_cidrs
+  cidr_blocks       = "${concat(var.trusted_cidrs, [var.nomad_ai_subnet_cidr])}"
 }
 
 resource "aws_iam_instance_profile" "nomad_ai" {

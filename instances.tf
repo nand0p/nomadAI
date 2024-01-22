@@ -93,17 +93,17 @@ resource "aws_instance" "nomad_ai_three" {
 resource "aws_ssm_parameter" "nomad_ai_1" {
   name      = "nomad_ai_1"
   type      = "String"
-  value     = "nomad1 ${aws_instance.nomad_ai_one.private_ip}"
+  value     = "${aws_instance.nomad_ai_one.private_ip} nomad1"
 }
 resource "aws_ssm_parameter" "nomad_ai_2" {
   name      = "nomad_ai_2"
   type      = "String"
-  value     = "nomad2 ${aws_instance.nomad_ai_two.private_ip}"
+  value     = "${aws_instance.nomad_ai_two.private_ip} nomad2"
 }
 resource "aws_ssm_parameter" "nomad_ai_3" {
   name      = "nomad_ai_3"
   type      = "String"
-  value     = "nomad3 ${aws_instance.nomad_ai_three.private_ip}"
+  value     = "${aws_instance.nomad_ai_three.private_ip} nomad3"
 }
 
 resource "aws_ssm_parameter" "nomad_ai_instance_ips" {
