@@ -57,3 +57,7 @@ output "nomad_ai_public_ips" {
 output "ssh_cmd" {
   value = "ssh -i ${local.ssh_path}/nomad_ai_key.pem ec2-user@${aws_instance.nomad_ai_one.public_ip}"
 }
+
+output "consul_ui" {
+  value = "http://${aws_instance.nomad_ai_one.public_ip}:8500/ui/"
+}
