@@ -73,7 +73,6 @@ hostname
 
 echo configure consul
 wget -O /etc/consul.d/consul.hcl https://raw.githubusercontent.com/nand0p/nomadai/${BRANCH}/bootstrap/consul.hcl
-wget -O /etc/consul.d/consul.env https://raw.githubusercontent.com/nand0p/nomadai/${BRANCH}/bootstrap/consul.env
 CONSUL_KEY=$(aws ssm get-parameter --with-decryption --region ${REGION} --name consul_encryption_key --output text --query Parameter.Value)
 sed -i "s|CONSUL_ENCRYPTION_KEY|$${CONSUL_KEY}|g" /etc/consul.d/consul.hcl
 sed -i "s|NOMADIC_ONE_IP|$${IP1}|g" /etc/consul.d/consul.hcl
@@ -97,7 +96,6 @@ systemctl start consul
 echo configure nomad
 mv -v /etc/nomad.d/nomad.hcl /etc/nomad.d/nomad.hcl.orig
 wget -O /etc/nomad.d/nomad.hcl https://raw.githubusercontent.com/nand0p/nomadai/${BRANCH}/bootstrap/nomad.hcl
-wget -O /etc/nomad.d/nomad.env https://raw.githubusercontent.com/nand0p/nomadai/${BRANCH}/bootstrap/nomad.env
 sed -i "s|NOMADIC_ONE_IP|$${IP1}|g" /etc/nomad.d/nomad.hcl
 sed -i "s|NOMADIC_TWO_IP|$${IP2}|g" /etc/nomad.d/nomad.hcl
 sed -i "s|NOMADIC_THREE_IP|$${IP3}|g" /etc/nomad.d/nomad.hcl

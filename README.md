@@ -5,7 +5,7 @@
 
 - Terraform for deployment of cluster nodes on AWS (GCP, Azure, and On-Site pending)
 
-- HashiCorp Nomad scheduler ensures fast and secure execution of dockerized TensorFlow code.
+- HashiCorp Nomad scheduler ensures fast and secure execution of TensorFlow code.
 
 - HashiCorp Consul maintains cluster state and key/value store for cluster.
 
@@ -16,7 +16,7 @@
 
 - TensorFlow Chief Node ("Worker 0") 
 - Workers Nodes 
-- Parameter Node
+- Parameter Server Node
 - Evaluator Node
 - Consul as KV store
 
@@ -25,7 +25,7 @@
 
 - Set your cloud provider authentication environment variables
 
-- Set a few variables in `variables.tf`, and execute `terraform plan` `terraform apply`
+- Set variables in `variables.tf`, and execute `terraform init` & `terraform apply`
 
 - Cluster will immediately start training model, as per Git-commited Tensorflow code.
 
@@ -41,7 +41,7 @@
 
 - This ensures each Tensorflow cluster node has full unobstructed connection to Nomad cluster node hardware.
 
-### references
+### References
 
 - https://www.tensorflow.org/guide/keras/distributed_training
 
@@ -60,3 +60,8 @@
 - https://towardsdatascience.com/distributed-training-in-tf-keras-with-w-b-ccf021f9322e
 
 - https://theaisummer.com/distributed-training/
+
+
+### TODO
+
+- GitAction pipelines to initiate model training upon tensorflow code commits
