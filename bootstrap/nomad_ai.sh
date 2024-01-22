@@ -121,6 +121,6 @@ journalctl -u consul
 systemctl status nomad
 journalctl -u nomad
 
-echo clone nomadic repo
+echo clone nomadai repo
 git clone https://github.com/nand0p/nomadai.git /home/ec2-user/nomadai
 chown -R ec2-user. /home/ec2-user/nomadai
