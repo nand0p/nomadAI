@@ -4,7 +4,7 @@ tags = {
 }
 
 stack_name            = "NomadAI"
-environment           = "production"
+environment           = "Production"
 aws_profile           = "nomadic"
 aws_region            = "eu-west-3"
 timestamp             = "January2024"
