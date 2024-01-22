@@ -8,7 +8,7 @@ ui_config = {
 
 server = true
 
-bind_addr = "0.0.0.0"
+bind_addr = "BIND_ADDRESS"
 
 bootstrap_expect=3
 

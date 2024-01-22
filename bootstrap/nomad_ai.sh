@@ -78,6 +78,7 @@ sed -i "s|CONSUL_ENCRYPTION_KEY|$${CONSUL_KEY}|g" /etc/consul.d/consul.hcl
 sed -i "s|NOMADIC_ONE_IP|$${IP1}|g" /etc/consul.d/consul.hcl
 sed -i "s|NOMADIC_TWO_IP|$${IP2}|g" /etc/consul.d/consul.hcl
 sed -i "s|NOMADIC_THREE_IP|$${IP3}|g" /etc/consul.d/consul.hcl
+sed -i "s|BIND_ADDRESS|$${LOCAL_IP}|g" /etc/consul.d/consul.hcl
 if [ "$${IP1}" == "$${LOCAL_IP}" ]; then
   echo "advertise_addr = \"$${IP1}\"" | tee -a /etc/consul.d/consul.hcl
   echo "client_addr = \"127.0.0.1 $${IP1}\"" | tee -a /etc/consul.d/consul.hcl
