@@ -2,7 +2,9 @@ datacenter = "dc-aws-001"
 
 data_dir = "/opt/consul"
 
-ui = true
+ui_config = {
+  enabled = true
+}
 
 server = true
 
