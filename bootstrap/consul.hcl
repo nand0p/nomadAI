@@ -1,18 +1,15 @@
-datacenter = "dc-aws-001"
-
-data_dir = "/opt/consul"
+server           = true
+datacenter       = "dc-aws-001"
+data_dir         = "/opt/consul"
+bootstrap_expect = 3
+client_addr      = "0.0.0.0"
+bind_addr        = "BIND_ADDRESS"
+encrypt          = "CONSUL_ENCRYPTION_KEY"
+#license_path    = "/etc/consul.d/consul.hclic"
 
 ui_config = {
   enabled = true
 }
-
-server = true
-
-bind_addr = "BIND_ADDRESS"
-
-bootstrap_expect=3
-
-encrypt = "CONSUL_ENCRYPTION_KEY"
 
 retry_join = [
   "NOMADIC_ONE_IP",
@@ -20,4 +17,3 @@ retry_join = [
   "NOMADIC_THREE_IP"
 ]
  
-#license_path = "/etc/consul.d/consul.hclic"
