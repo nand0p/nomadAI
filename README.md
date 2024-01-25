@@ -38,12 +38,11 @@
 ## Tensorflow Cluster Nodes / Docker Containers / Nomad Exec
 
 - Nomad workers run the Tensorflow code, either directly on machine via Exec, or with Docker Containers.
-  * Both Nomad Exec and Nomad Docker workers are supported
-  * Nomad Exec eliminates the Docker/Container layer, and thus may have performance improvements.
-  * Nomad Docker is available, for existing containerized developer/pipeline workflows
-  * Tensorflow cluster nodes (Python via Exec or Docker) run 1:1 on Nomad cluster nodes (Cloud VM Instances)
-
-- This ensures each Tensorflow cluster node has full unobstructed connection to Nomad cluster node hardware.
+  - Both Nomad Exec and Nomad Docker workers are supported
+  - Nomad Exec eliminates the Docker/Container layer, and thus may have performance improvements.
+  - Nomad Docker is available, for existing containerized developer/pipeline workflows
+  - Tensorflow cluster nodes (Python via Exec or Docker) run 1:1 on Nomad cluster nodes (Cloud VM Instances)
+    * Each Tensorflow cluster node has a noncompeting connection to each Nomad cluster node hardware.
 
 ### References
 
