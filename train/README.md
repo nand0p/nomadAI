@@ -1,33 +1,17 @@
-# Dockerized Tensorflow
+# Train Models
 
-- Python code execs in container, on the nomad cluster.
+- Nomad HCL job definitions are used to schedule the Python code or Docker Container on cluster
 
-- Nomad job definitions (HCL code) execute on the cluster.
+  - Ad-Hoc Jobs
+    * These jobs can be schedules by issuing `nomad run` command on cli
+    * This is for iteratively working the code/model
 
-
-## Docker Build Pipeline
-
-- tensorflow docker images are created and tested 
-
-- nomad job HCL is executed, and container runs on the cluster
-
-
-## Single vs Multi Worker Training
-
-- Existing tensorflow code works as-is on a single hardware node
-
-- Multi-worker enhancements happen iteratively
-
-- Nomad scheduler allows for flexibility of configurations.
-
-
-## Worker Types
-
-- Worker 0 (Chief Node)
-
-- Workers (run Nomad HCL job definitions)
-
-- Evaluator (needs to run on hardware accelerated node - test if training is correct)
-
-- Parameter Server (this may not be needed, as job definitions can inject parameters)
-
+  - Final Model (Jobs execute upon Cluster convergance)
+    * Nomad Jobs can trigger immediately upon cluster formation.
+    * If the HCL job definitions exist in this directoy, they will execute on workers 1:1
+      - HCL jobs must execute on a single Nomad worker, to avoid hardware compete
+      - The following Job Names can be commited:
+        * `chief.hcl`
+        * `worker.hcl`
+        * `parameter.hcl`
+        * `evaluator.hcl`

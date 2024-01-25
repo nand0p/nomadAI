@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-VERSION=v001
+VERSION=$(cat version.txt)
 
 for i in $(find docker -type d); do
   echo "build docker $i:${VERSION}";
